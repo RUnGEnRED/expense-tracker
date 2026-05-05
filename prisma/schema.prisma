@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum Rola {
+  PRACOWNIK
+  KIEROWNIK
+}
+
+enum StatusWniosku {
+  OCZEKUJACY
+  ZAAKCEPTOWANY
+  ODRZUCONY
+}
+
+enum KategoriaWydatku {
+  ZAKWATEROWANIE
+  TRANSPORT
+  WYZYWIENIE
+  INNE
+}
+
+model Uzytkownik {
+  id        Int       @id @default(autoincrement())
+  imie      String
+  nazwisko  String
+  email     String    @unique
+  haslo     String
+  rola      Rola     @default(PRACOWNIK)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  
+  zgloszenia ZgloszenieWydatku[]
+  
+  @@map("uzytkownicy")
+}
+
+model ZgloszenieWydatku {
+  id              Int              @id @default(autoincrement())
+  nazwa           String
+  kwota           Decimal          @db.Decimal(10, 2)
+  dataWydatku     DateTime
+  kategoria       KategoriaWydatku
+  opis            String?
+  status          StatusWniosku   @default(OCZEKUJACY)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  
+  uzytkownikId   Int
+  uzytkownik     Uzytkownik      @relation(fields: [uzytkownikId], references: [id])
+  
+  @@map("zgloszenia_wydatkow")
+}
