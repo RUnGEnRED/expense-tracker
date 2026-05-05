@@ -84,4 +84,4 @@ Aplikacja będzie dostępna pod adresem: `http://localhost:3000`
 
 ## Licencja
 
-[MIT](LICENSE)
+Ten projekt jest licencjonowany na licencji [MIT](LICENSE).
