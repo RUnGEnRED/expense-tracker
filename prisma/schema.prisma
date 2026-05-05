@@ -37,24 +37,29 @@ model Uzytkownik {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   
-  zgloszenia ZgloszenieWydatku[]
+  zgloszenia           ZgloszenieWydatku[] @relation("ZgloszeniaUzytkownika")
+  rozpatrzoneWnioski   ZgloszenieWydatku[] @relation("RozpatrzoneWnioski")
   
   @@map("uzytkownicy")
 }
 
 model ZgloszenieWydatku {
-  id              Int              @id @default(autoincrement())
-  nazwa           String
-  kwota           Float
-  dataWydatku     DateTime
-  kategoria       KategoriaWydatku
-  opis            String?
-  status          StatusWniosku   @default(OCZEKUJACY)
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
+  id                  Int              @id @default(autoincrement())
+  nazwa               String
+  kwota               Float
+  dataWydatku         DateTime
+  kategoria           KategoriaWydatku
+  opis                String?
+  status              StatusWniosku   @default(OCZEKUJACY)
+  komentarzKierownika String?
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
   
-  uzytkownikId   Int
-  uzytkownik     Uzytkownik      @relation(fields: [uzytkownikId], references: [id])
+  uzytkownikId        Int
+  uzytkownik          Uzytkownik      @relation("ZgloszeniaUzytkownika", fields: [uzytkownikId], references: [id])
+  
+  rozpatrzonyPrzezId  Int?
+  rozpatrzonyPrzez    Uzytkownik?     @relation("RozpatrzoneWnioski", fields: [rozpatrzonyPrzezId], references: [id])
   
   @@map("zgloszenia_wydatkow")
 }

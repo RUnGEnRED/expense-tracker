@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, KategoriaWydatku } from '@prisma/client'
 import { hash } from 'bcryptjs'
 
 const connectionString = process.env.DATABASE_URL!
@@ -48,7 +48,7 @@ async function main() {
       nazwa: 'Delegacja do Warszawy',
       kwota: 350.50,
       dataWydatku: new Date('2026-04-15'),
-      kategoria: 'TRANSPORT',
+      kategoria: KategoriaWydatku.TRANSPORT,
       opis: 'Bilet kolejowy PKP',
       status: 'ZAAKCEPTOWANY' as const,
       uzytkownikId: pracownik.id,
@@ -57,7 +57,7 @@ async function main() {
       nazwa: 'Nocleg w hotelu',
       kwota: 450.00,
       dataWydatku: new Date('2026-04-15'),
-      kategoria: 'ZAKWATEROWANIE',
+      kategoria: KategoriaWydatku.ZAKWATEROWANIE,
       opis: 'Hotel dla biznesu',
       status: 'OCZEKUJACY' as const,
       uzytkownikId: pracownik.id,
@@ -66,7 +66,7 @@ async function main() {
       nazwa: 'Obiad służbowy',
       kwota: 120.00,
       dataWydatku: new Date('2026-04-16'),
-      kategoria: 'WYZYWIENIE',
+      kategoria: KategoriaWydatku.WYZYWIENIE,
       opis: 'Restauracja podczas spotkania',
       status: 'ODRZUCONY' as const,
       uzytkownikId: pracownik.id,

@@ -20,10 +20,8 @@ export function RegisterForm() {
     if (result?.error) {
       setError(result.error)
       setPending(false)
-    } else if (result?.success) {
-      router.push(result.redirectTo || '/pracownik')
-      router.refresh()
     }
+    // On success, registerAction redirects automatically
   }
 
   return (
