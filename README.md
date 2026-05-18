@@ -45,7 +45,7 @@ System umożliwia pracownikom szybkie zgłaszanie wydatków, a kierownikom efekt
 
 1. **Sklonuj repozytorium**:
    ```bash
-   git clone <url-repozytorium>
+   git clone https://github.com/RUnGEnRED/expense-tracker.git
    cd expense-tracker
    ```
 

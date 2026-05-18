@@ -38,7 +38,7 @@ export default async function PracownikPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
           <h1 className="text-4xl font-black tracking-tighter text-gray-900">
-            Witaj, {user.imie}! 👋
+            Witaj, {user.imie}!
           </h1>
           <p className="text-gray-500 mt-1 font-medium text-lg">Zarządzaj swoimi wydatkami służbowymi w jednym miejscu.</p>
         </div>

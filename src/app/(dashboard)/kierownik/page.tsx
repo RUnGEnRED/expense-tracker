@@ -92,7 +92,7 @@ export default async function KierownikPage({
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
           <h1 className="text-4xl font-black tracking-tighter text-gray-900 flex items-center gap-3">
-            Zarządzanie Zespołem 🛡️
+            Zarządzanie Zespołem
           </h1>
           <p className="text-gray-500 mt-1 font-medium text-lg">Monitoruj budżet i zatwierdzaj wnioski swoich pracowników.</p>
         </div>
